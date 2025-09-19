@@ -1,0 +1,218 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+body {
+    background: #f5f6fa;
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.todo-card {
+    background: #fff;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    border-radius: 18px;
+    padding: 2rem 1.5rem;
+    width: 100%;
+    max-width: 400px;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    font-weight: 600;
+    margin-bottom: 1.2rem;
+    color: #222;
+}
+
+.add-task {
+    display: flex;
+    width: 100%;
+    gap: 0.5rem;
+    margin-bottom: 1.2rem;
+}
+
+#task-input {
+    flex: 1;
+    padding: 0.7rem 1rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 1rem;
+    outline: none;
+    transition: border 0.2s;
+}
+
+#task-input:focus {
+    border-color: #7f8cfa;
+}
+
+#add-btn {
+    background: #7f8cfa;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 0.7rem 1.2rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+    font-weight: 600;
+}
+
+#add-btn:hover {
+    background: #5e6ad2;
+}
+
+.filters {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.filter-btn {
+    background: #f0f1f6;
+    border: none;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    font-size: 0.95rem;
+    color: #555;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+
+.filter-btn.active {
+    background: #7f8cfa;
+    color: #fff;
+}
+
+#task-list {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+    margin: 0;
+}
+
+.task-item {
+    background: #f9fafe;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.7rem 1rem;
+    margin-bottom: 0.7rem;
+    transition: transform 0.25s, opacity 0.25s;
+    opacity: 1;
+}
+
+.task-item.completed {
+    text-decoration: line-through;
+    color: #aaa;
+    opacity: 0.6;
+}
+
+.task-left {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+}
+
+.checkbox {
+    width: 20px;
+    height: 20px;
+    accent-color: #7f8cfa;
+    cursor: pointer;
+}
+
+.task-text {
+    font-size: 1rem;
+    word-break: break-word;
+    outline: none;
+    background: transparent;
+    border: none;
+    color: inherit;
+    padding: 0;
+    margin: 0;
+}
+
+.task-text[readonly] {
+    cursor: default;
+}
+
+.task-actions {
+    display: flex;
+    gap: 0.3rem;
+}
+
+.action-btn {
+    background: none;
+    border: none;
+    color: #7f8cfa;
+    font-size: 1.1rem;
+    cursor: pointer;
+    border-radius: 6px;
+    padding: 0.2rem 0.5rem;
+    transition: background 0.2s, color 0.2s;
+}
+
+.action-btn:hover {
+    background: #eaeaff;
+    color: #5e6ad2;
+}
+
+@media (max-width: 500px) {
+    .todo-card {
+        max-width: 95vw;
+        min-width: 0;
+        padding: 1.2rem 0.5rem;
+    }
+    h1 {
+        font-size: 1.3rem;
+    }
+    #task-input, #add-btn {
+        font-size: 0.95rem;
+        padding: 0.5rem 0.7rem;
+    }
+    .task-item {
+        padding: 0.5rem 0.7rem;
+    }
+}
+
+/* Animations */
+.task-item.adding {
+    transform: scale(0.95);
+    opacity: 0;
+    animation: fadeIn 0.3s forwards;
+}
+
+.task-item.removing {
+    animation: fadeOut 0.3s forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    to {
+        transform: scale(0.95);
+        opacity: 0;
+        height: 0;
+        margin-bottom: 0;
+        padding: 0;
+    }
+}
